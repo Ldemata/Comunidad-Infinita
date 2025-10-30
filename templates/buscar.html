@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorar — Comunidad Infinita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Fondo dinámico */
+    body {
+      background: linear-gradient(120deg, #0f172a, #1e293b, #334155);
+      background-size: 400% 400%;
+      animation: gradientFlow 20s ease infinite;
+      font-family: "Poppins", sans-serif;
+      color: white;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Efecto de vidrio */
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+    }
+
+    /* Animación de entrada */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center text-center">
+
+  <!-- NAVBAR -->
+  <nav class="absolute top-0 left-0 w-full glass backdrop-blur-xl z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="text-2xl font-bold text-cyan-400 tracking-wide">Comunidad<span class="text-white">∞</span></a>
+      <a href="publicar.html" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 rounded-xl transition font-semibold">Publicar</a>
+    </div>
+  </nav>
+
+  <!-- SECCIÓN CENTRAL -->
+  <section class="fade-in mt-10">
+    <h1 class="text-5xl font-bold mb-6 leading-tight">
+      Explora el conocimiento sin límites 🌌
+    </h1>
+    <p class="text-gray-300 text-lg mb-10">
+      Busca temas, preguntas o guías creadas por la comunidad.
+    </p>
+
+    <!-- FORMULARIO DE BÚSQUEDA -->
+    <form action="resultados.html" method="get" class="flex items-center justify-center glass p-3 rounded-full w-[90%] max-w-2xl mx-auto">
+      <input 
+        type="text" 
+        name="q"
+        placeholder="Escribe algo para explorar..." 
+        class="w-full bg-transparent text-white placeholder-gray-300 px-6 py-3 focus:outline-none text-lg"
+        required
+      >
+      <button type="submit" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full font-semibold transition-all">
+        Buscar
+      </button>
+    </form>
+
+    <!-- BOTÓN VOLVER -->
+    <div class="mt-10">
+      <a href="index.html" class="text-gray-400 hover:text-gray-200 transition">← Volver al inicio</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-10 text-gray-400 absolute bottom-0 w-full">
+    © 2025 Comunidad Infinita — Inspira. Aprende. Comparte.
+  </footer>
+
+</body>
+</html>

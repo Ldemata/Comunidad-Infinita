@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro — Comunidad Infinita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #0f172a, #1e293b, #334155);
+      background-size: 400% 400%;
+      animation: gradientFlow 18s ease infinite;
+      color: white;
+      font-family: "Nunito Sans", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .glass:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1.02);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .input-style {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .input-style:focus {
+      border-color: #22d3ee;
+      outline: none;
+      background: rgba(255,255,255,0.15);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGO -->
+  <a href="index.html" class="text-3xl font-bold text-cyan-400 mb-10 fade-in hover:scale-105 transition">
+    Comunidad<span class="text-white">∞</span>
+  </a>
+
+  <!-- FORMULARIO -->
+  <section class="glass rounded-3xl p-10 w-full max-w-md shadow-xl fade-in">
+    <h2 class="text-2xl font-semibold text-center mb-6">Crear Cuenta</h2>
+    
+    <form onsubmit="return registrarUsuario(event)" class="space-y-5">
+      <div>
+        <label for="nombre" class="block text-sm text-gray-300 mb-2">Nombre completo</label>
+        <input id="nombre" type="text" placeholder="Tu nombre completo" class="input-style">
+      </div>
+
+      <div>
+        <label for="usuario" class="block text-sm text-gray-300 mb-2">Nombre de usuario</label>
+        <input id="usuario" type="text" placeholder="Ejemplo: luis_123" class="input-style">
+      </div>
+
+      <div>
+        <label for="correo" class="block text-sm text-gray-300 mb-2">Correo electrónico</label>
+        <input id="correo" type="email" placeholder="tucorreo@ejemplo.com" class="input-style">
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm text-gray-300 mb-2">Contraseña</label>
+        <input id="password" type="password" placeholder="••••••••" class="input-style">
+      </div>
+
+      <div>
+        <label for="confirmar" class="block text-sm text-gray-300 mb-2">Confirmar contraseña</label>
+        <input id="confirmar" type="password" placeholder="Repite tu contraseña" class="input-style">
+      </div>
+
+      <div class="flex items-center gap-2 text-sm text-gray-400">
+        <input type="checkbox" id="terminos" class="accent-cyan-400">
+        <label for="terminos">Acepto los <a href="#" class="text-cyan-400 hover:text-cyan-300">términos y condiciones</a></label>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-cyan-500 hover:bg-cyan-400 rounded-xl font-semibold transition" onclick="window.location.href = 'index.html'">
+        Registrarme
+      </button>
+    </form>
+
+    <p class="text-center text-gray-400 mt-6 text-sm">
+      ¿Ya tienes cuenta?
+      <a href="login.html" class="text-cyan-400 hover:text-cyan-300 font-medium">Inicia sesión</a>
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mt-10 text-gray-500 text-sm fade-in">
+    © 2025 Comunidad Infinita — Donde el conocimiento no tiene límites 🌌
+  </footer>
+
+  <script>
+    function registrarUsuario(event) {
+      event.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const usuario = document.getElementById("usuario").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const conf = document.getElementById("confirmar").value.trim();
+      const terminos = document.getElementById("terminos").checked;
+
+      if (!nombre || !usuario || !correo || !pass || !conf) {
+        alert("Por favor, completa todos los campos.");
+        return false;
+      }
+
+      if (pass !== conf) {
+        alert("Las contraseñas no coinciden.");
+        return false;
+      }
+
+      if (!terminos) {
+        alert("Debes aceptar los términos y condiciones.");
+        return false;
+      }
+
+      alert("¡Registro exitoso! Bienvenido a Comunidad Infinita 🌌");
+      window.location.href = "login.html";
+      return false;
+    }
+  </script>
+
+</body>
+</html>

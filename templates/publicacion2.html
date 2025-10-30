@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicación - Comunidad Infinita</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poetsen+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/build/css/app.css">
+</head>
+<style>
+  
+/* Fondo animado con degradado dinámico */
+    body {
+      background: linear-gradient(120deg, #0f172a, #1e293b, #334155);
+      background-size: 400% 400%;
+      animation: gradientFlow 20s ease infinite;
+      font-family: "Roboto", sans-serif !important;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Efecto de vidrio */
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Animación de entrada suave */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Efecto hover 3D */
+    .tilt:hover {
+      transform: perspective(1000px) rotateY(8deg) rotateX(4deg) scale(1.02);
+      transition: 0.3s ease;
+    }
+
+    body {
+      background: linear-gradient(120deg, #0f172a, #1e293b, #334155);
+      background-size: 400% 400%;
+      animation: gradientFlow 18s ease infinite;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reply:hover {
+      transform: translateY(-3px);
+      transition: 0.3s;
+    }
+
+    .file-preview {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+</style>
+
+<body class="text-white font-[Poppins] min-h-screen">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full glass z-50 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="/" class="text-2xl font-bold text-cyan-400 tracking-wide">Comunidad<span class="text-white">∞</span></a>
+      <input type="text" placeholder="Buscar..." class="px-4 py-2 rounded-xl glass text-white placeholder-gray-300 w-64 focus:outline-none">
+    </div>
+  </nav>
+
+  <!-- PUBLICACIÓN PRINCIPAL -->
+  <section class="pt-28 pb-10 max-w-3xl mx-auto px-4 fade-in">
+    <article class="glass rounded-3xl p-8 shadow-xl">
+      <header class="mb-6">
+        <h1 class="text-3xl font-semibold mb-2">
+          Guía: Cómo implementar un login seguro sin frameworks
+        </h1>
+        <div class="flex items-center text-gray-400 text-sm gap-3">
+          <span>👤 <b>CodeLuis</b></span>
+          <span>📅 Hace 1 día</span>
+          <span>🔥 212 votos</span>
+        </div>
+      </header>
+
+      <p class="text-gray-300 leading-relaxed mb-6">
+        Esta guía muestra cómo crear un sistema de autenticación básico en PHP con hash de contraseñas y validación de sesión. Ideal para quienes inician y quieren comprender la lógica detrás de los frameworks.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+        <div class="file-preview flex flex-col items-center justify-center rounded-xl p-4 text-sm text-gray-300">
+          📄 <span class="mt-2">frameworks.pdf</span>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-gray-400 text-sm">
+        <span>#Gestión #TrabajoEnEquipo</span>
+        <button class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 rounded-xl text-white transition">Responder</button>
+      </div>
+    </article>
+  </section>
+
+  <!-- RESPUESTAS PRINCIPALES -->
+  <section class="max-w-3xl mx-auto px-4 space-y-6 fade-in">
+
+    <!-- RESPUESTA 1 -->
+    <div class="glass rounded-2xl p-5 reply">
+      <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+        <span>👤 AnaDev</span>
+        <span>💬 Hace 8 horas</span>
+      </div>
+      <p class="text-gray-200 mb-3">
+        Muy buena guía, ¿recomiendas usar password_hash o md5 para algo rápido?
+      </p>
+
+      <div class="flex gap-3 mb-3">
+        <img src="https://picsum.photos/120/80?random=8" alt="Imagen adjunta" class="rounded-lg file-preview object-cover">
+      </div>
+
+      <div class="flex justify-end">
+        <button class="text-cyan-400 hover:text-cyan-300 text-sm">Responder</button>
+      </div>
+
+      <!-- RESPUESTAS ANIDADAS -->
+      <div class="mt-5 ml-6 border-l border-gray-700 pl-4 space-y-4">
+        <div class="glass rounded-xl p-4">
+          <div class="text-sm text-gray-400 mb-2">👤 RetroCoder — 💬 Hace 4 horas</div>
+          <p class="text-gray-300">
+            Nunca uses md5, ya está obsoleto. password_hash es lo mínimo recomendable hoy.
+          </p>
+        </div>
+
+        <div class="glass rounded-xl p-4">
+          <div class="text-sm text-gray-400 mb-2">👤 UXMar — 💬 Hace 2 horas</div>
+          <p class="text-gray-300">
+            Y si usas JS para el frontend, puedes combinarlo con tokens en lugar de sesiones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁREA DE RESPUESTA -->
+  <section class="max-w-3xl mx-auto mt-10 mb-16 px-4 fade-in">
+    <div class="glass rounded-2xl p-6">
+      <h3 class="text-xl mb-3 font-semibold">Tu respuesta</h3>
+      <textarea rows="4" placeholder="Escribe tu aporte o experiencia..."
+        class="w-full p-3 rounded-xl bg-transparent border border-gray-600 focus:outline-none text-gray-200 placeholder-gray-400"></textarea>
+
+      <!-- Simulación de adjuntos -->
+      <div class="flex gap-3 mt-4">
+        <div class="file-preview rounded-xl p-3 text-sm flex items-center gap-2 text-gray-300">
+          📎 imagen_ref.png
+        </div>
+        <div class="file-preview rounded-xl p-3 text-sm flex items-center gap-2 text-gray-300">
+          📄 propuesta.docx
+        </div>
+      </div>
+
+      <div class="flex justify-end mt-4">
+        <button class="px-5 py-2 bg-cyan-500 hover:bg-cyan-400 rounded-xl font-semibold transition">Enviar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-10 text-gray-400">
+    © 2025 Comunidad Infinita — La conversación nunca termina 💫
+  </footer>
+
+</body>
+</html>

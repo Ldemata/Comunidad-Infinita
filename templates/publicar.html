@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva Publicación — Comunidad Infinita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Fondo animado */
+    body {
+      background: linear-gradient(120deg, #0f172a, #1e293b, #334155);
+      background-size: 400% 400%;
+      animation: gradientFlow 18s ease infinite;
+      font-family: "Poppins", sans-serif;
+      color: white;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Estilo glass */
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+    }
+
+    /* Animaciones */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn {
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    textarea {
+      resize: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full glass z-50 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="text-2xl font-bold text-cyan-400 tracking-wide">Comunidad<span class="text-white">∞</span></a>
+      <button class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 rounded-xl transition font-semibold" onclick="window.location.href = 'perfil.html'">Mi Perfil</button>
+    </div>
+  </nav>
+
+  <!-- FORMULARIO PRINCIPAL -->
+  <main class="pt-32 pb-16 max-w-3xl mx-auto px-4 fade-in">
+    <h1 class="text-4xl font-bold mb-6 text-center">Crear nueva publicación</h1>
+    <p class="text-gray-300 text-center mb-10">Comparte una guía, una experiencia o responde a una duda de la comunidad.</p>
+
+    <form class="glass rounded-2xl p-8 space-y-6">
+      <!-- TÍTULO -->
+      <div>
+        <label class="block mb-2 text-gray-300">Título de la publicación</label>
+        <input type="text" placeholder="Ej. Cómo mejorar en programación sin rendirse" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white">
+      </div>
+
+      <!-- CATEGORÍA -->
+      <div>
+        <label class="block mb-2 text-gray-300">Categoría</label>
+        <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white">
+          <option selected disabled>Selecciona una categoría</option>
+          <option>Programación</option>
+          <option>Educación</option>
+          <option>Tecnología</option>
+          <option>Consejos</option>
+          <option>Otros</option>
+        </select>
+      </div>
+
+      <!-- CONTENIDO -->
+      <div>
+        <label class="block mb-2 text-gray-300">Contenido</label>
+        <textarea rows="6" placeholder="Escribe tu guía o respuesta aquí..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white"></textarea>
+      </div>
+
+      <!-- ARCHIVOS ADJUNTOS -->
+      <div class="flex flex-col items-center justify-center border-2 border-dashed border-cyan-400/40 rounded-xl p-6 hover:bg-white/5 transition">
+        <p class="text-gray-300 mb-2">Arrastra tus archivos o</p>
+        <button type="button" class="btn px-5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-white font-semibold">Selecciona archivos</button>
+        <p class="text-gray-400 text-sm mt-2">Formatos permitidos: JPG, PNG, PDF, DOCX</p>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="flex justify-between items-center pt-4">
+        <a href="index.html" class="text-gray-400 hover:text-gray-200 transition">← Volver</a>
+        <button type="button" class="btn px-6 py-3 bg-cyan-500 hover:bg-cyan-400 rounded-full font-semibold shadow-lg">Publicar ✨</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-10 text-gray-400">
+    © 2025 Comunidad Infinita — Comparte tu conocimiento 🌌
+  </footer>
+
+</body>
+</html>

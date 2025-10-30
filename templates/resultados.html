@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados de búsqueda — Comunidad Infinita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(120deg, #0f172a, #1e293b, #334155);
+      background-size: 400% 400%;
+      animation: gradientFlow 18s ease infinite;
+      color: white;
+      font-family: "Nunito Sans", sans-serif;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .glass:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1.02);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen">
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full glass z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="/index.html" class="text-2xl font-bold text-cyan-400">Comunidad<span class="text-white">∞</span></a>
+      <div class="flex items-center gap-3">
+        <input id="searchInput" type="text" placeholder="Buscar..." value="Programación" 
+               class="px-4 py-2 rounded-xl glass focus:outline-none text-white placeholder-gray-300 w-64">
+        <button id="searchBtn" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 rounded-xl transition">Buscar</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="pt-32 pb-10 text-center">
+    <h2 class="text-4xl font-bold mb-3 fade-in">Resultados para "<span class="text-cyan-400">Programación</span>"</h2>
+    <p class="text-gray-400">Mostrando temas relacionados con tu búsqueda.</p>
+  </header>
+
+  <!-- RESULTADOS -->
+  <main class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+    
+    <!-- Publicación encontrada -->
+    <a href="/publicacion1.html" class="glass rounded-2xl p-6 fade-in">
+      <h3 class="text-xl font-semibold mb-2">¿Cómo mantener la motivación al aprender programación?</h3>
+      <p class="text-gray-300 mb-4">Llevo meses aprendiendo desarrollo web, pero últimamente siento que avanzo lento. A veces pierdo las ganas y no sé si es normal.</p>
+      <div class="flex justify-between text-sm text-gray-400 mb-2">
+        <span>👤 DevSofía</span>
+        <span>💬 14 respuestas</span>
+      </div>
+      <div class="flex gap-2 text-xs text-cyan-300">
+        <span class="tag">#Aprendizaje</span>
+        <span class="tag">#Programación</span>
+        <span class="tag">#Lógica</span>
+      </div>
+    </a>
+
+    <!-- Publicación 2 -->
+    <a href="/publicacion2.html" class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.2s">
+      <h3 class="text-xl font-semibold mb-2">Guía: Cómo implementar un login seguro sin frameworks</h3>
+      <p class="text-gray-300 mb-4">Esta guía muestra cómo crear un sistema de autenticación básico en PHP con hash de contraseñas y validación de sesión. Ideal para quienes inician y quieren comprender la lógica detrás de los frameworks.</p>
+      <div class="flex justify-between text-sm text-gray-400 mb-2">
+        <span>👤 LuisTech</span>
+        <span>💬 9 respuestas</span>
+      </div>
+      <div class="flex gap-2 text-xs text-cyan-300">
+        <span class="tag">#Motivación</span>
+        <span class="tag">#Desarrollo</span>
+      </div>
+    </a>
+
+    <!-- Publicación 3 -->
+    <a href="/publicacion.html" class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.4s">
+      <h3 class="text-xl font-semibold mb-2">Mi experiencia implementando un sistema ERP desde cero</h3>
+      <p class="text-gray-300 mb-4">Durante seis meses desarrollé un mini ERP para una empresa local. Aprendí mucho sobre base de datos, optimización y gestión de usuarios. Dejo algunas capturas y errores que cometí por si a alguien le sirve.</p>
+      <div class="flex justify-between text-sm text-gray-400 mb-2">
+        <span>👤 RetroCoder</span>
+        <span>💬 22 respuestas</span>
+      </div>
+      <div class="flex gap-2 text-xs text-cyan-300">
+        <span class="tag">#Lenguajes</span>
+        <span class="tag">#Tendencias</span>
+      </div>
+    </a>
+    <!-- Publicación encontrada -->
+    <a href="/publicacion.html" class="glass rounded-2xl p-6 fade-in">
+      <h3 class="text-xl font-semibold mb-2">¿Vale la pena aprender C++ en 2025?</h3>
+      <p class="text-gray-300 mb-4">He visto que la mayoría usa Python o JavaScript, pero me interesa C++ por rendimiento. ¿Sigue siendo útil en el mercado actual o ya quedó atrás?</p>
+      <div class="flex justify-between text-sm text-gray-400 mb-2">
+        <span>👤 DevSofía</span>
+        <span>💬 14 respuestas</span>
+      </div>
+      <div class="flex gap-2 text-xs text-cyan-300">
+        <span class="tag">#Aprendizaje</span>
+        <span class="tag">#Programación</span>
+        <span class="tag">#Lógica</span>
+      </div>
+    </a>
+
+    <!-- Publicación 2 -->
+    <a href="/publicacion.html" class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.2s">
+      <h3 class="text-xl font-semibold mb-2">Cómo documentar tu proyecto para que otros lo entiendan</h3>
+      <p class="text-gray-300 mb-4">Muchos suben proyectos geniales a GitHub sin README claro. Este post recopila tips para hacer documentación útil, legible y atractiva para colaboradores o empleadores.</p>
+      <div class="flex justify-between text-sm text-gray-400 mb-2">
+        <span>👤 LuisTech</span>
+        <span>💬 9 respuestas</span>
+      </div>
+      <div class="flex gap-2 text-xs text-cyan-300">
+        <span class="tag">#Motivación</span>
+        <span class="tag">#Desarrollo</span>
+      </div>
+    </a>
+
+    <!-- Publicación 3 -->
+    <a href="/publicacion.html" class="glass rounded-2xl p-6 fade-in" style="animation-delay: 0.4s">
+      <h3 class="text-xl font-semibold mb-2">Los mejores lenguajes para iniciar en 2025</h3>
+      <p class="text-gray-300 mb-4">Una comparativa entre Python, JavaScript y Rust para nuevos desarrolladores.</p>
+      <div class="flex justify-between text-sm text-gray-400 mb-2">
+        <span>👤 RetroCoder</span>
+        <span>💬 22 respuestas</span>
+      </div>
+      <div class="flex gap-2 text-xs text-cyan-300">
+        <span class="tag">#Lenguajes</span>
+        <span class="tag">#Tendencias</span>
+      </div>
+    </a>
+
+    <!-- BOTÓN VER MÁS -->
+<div class="flex justify-center mt-10">
+  <button class="px-8 py-3 rounded-full bg-cyan-500/80 hover:bg-cyan-400 transition-all text-white font-semibold shadow-lg backdrop-blur-md border border-white/10 hover:scale-105 active:scale-95">
+    Ver más publicaciones ⟳
+  </button>
+</div>
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-10 text-gray-400">
+    © 2025 Comunidad Infinita — Tu búsqueda no tiene fin 🌌
+  </footer>
+
+  <!-- Script de simulación -->
+  <script>
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      const query = document.getElementById("searchInput").value.trim();
+      if(query) {
+        window.location.href = "resultados.html?q=" + encodeURIComponent(query);
+      }
+    });
+  </script>
+</body>
+</html>

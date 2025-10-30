@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía de Matemática - Álgebra básica | EduShare</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #fdf9f4;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .navbar {
+      background-color: #ff7b00;
+    }
+    .card {
+      border: none;
+      border-left: 4px solid #ff7b00;
+    }
+    .badge-cat {
+      background-color: #ffe5cc;
+      color: #b04e00;
+      font-weight: 500;
+    }
+    .btn-orange {
+      background-color: #ff7b00;
+      color: white;
+      border: none;
+    }
+    .btn-orange:hover {
+      background-color: #e46e00;
+    }
+    .like-btn {
+      border: none;
+      background: none;
+      color: #ff7b00;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .like-btn:hover {
+      transform: scale(1.1);
+    }
+    /* Comentarios */
+    .comment {
+      border-left: 3px solid #ff7b00;
+      padding-left: 10px;
+      margin-bottom: 15px;
+    }
+    .reply {
+      margin-top: 20px;
+      margin-left: 40px;
+      border-left: 2px dashed #ff7b00;
+      padding-left: 10px;
+    }
+    iframe {
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+    .modal-content {
+  background-color: #111;
+  border-radius: 12px;
+}
+.modal-body img {
+  max-height: 80vh;
+  object-fit: contain;
+}
+  </style>
+</head>
+<body>
+
+  <!-- 🔸 Barra superior -->
+  <nav class="navbar py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="/" class="text-white text-decoration-none fw-semibold">⬅ Volver</a>
+      <h4 class="text-white fw-semibold mb-0">📚 EduShare</h4>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- 📄 Contenido principal -->
+  <div class="container my-4">
+    <div class="card p-4 mb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="fw-bold mb-0">{{ data_publicacion['titulo'] }}</h3>
+        <div class="d-flex gap-1 flex-wrap">
+          {% for categoria in data_publicacion['categorias'] %}
+            <span class="badge badge-cat">{{ categoria }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <p class="text-muted small mb-0">
+          por <strong>{{ data_publicacion['usuario'] }}</strong> · Publicado el {{ data_publicacion['fechaCreacion'] }}
+        </p>
+        <div class="mt-3 d-flex align-items-center gap-3">
+            <button class="like-btn text-success">
+            👍 <span>{{ data_publicacion['votos'] }}</span>
+            </button>
+            <button class="like-btn text-success">
+            👎 <span>{{ data_publicacion['votos'] }}</span>
+            </button>
+        </div>
+      </div>
+
+      <hr>
+      <p>{{ data_publicacion['contenido'] }}</p>
+    </div>
+
+    <!-- 📎 Documentos -->
+     {% if data_publicacion['documentos'] %}
+    <h5 class="fw-semibold mb-3">📂 Documentos Adjuntos</h5>
+    {% endif %}
+    {% for documento in data_publicacion['documentos'] %}
+    <div class="mb-4">
+      <h6 class="fw-semibold mb-2">{{ documento['nombre'] }}</h6>
+      <iframe src="{{ url_for('static', filename=documento['url']) }}" width="100%" height="400px"></iframe></div>
+    {% endfor %}
+    <!-- <div class="mb-4">
+      <h6 class="fw-semibold mb-2">Guía Álgebra PDF</h6>
+      <iframe src="{{ url_for('static', filename='docs/Tarea Luis De Mata.pdf') }}" width="100%" height="400px"></iframe>
+    </div> -->
+
+    {% if data_publicacion['imagenes'] %}
+    <h5 class="fw-semibold mb-3">📸 Imagenes Adjuntas</h5>
+    {% endif %}
+    <div class="row g-3 mb-4">
+      {% for imagen in data_publicacion['imagenes'] %}
+      <div class="col-md-6">
+        <h6 class="fw-semibold mb-2">{{ imagen['nombre'] }}</h6>
+        <img src="{{ url_for('static', filename=imagen['url']) }}"
+            alt="{{ imagen['nombre'] }}"
+            class="img-fluid rounded shadow-sm"
+            style="cursor:pointer;"
+            data-bs-toggle="modal"
+            data-bs-target="#modalImagen{{ imagen['id'] }}">
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalImagen{{ imagen['id'] }}" tabindex="-1" aria-labelledby="modalLabel{{ imagen['id'] }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content bg-dark text-white">
+            <div class="modal-header border-0">
+              <h5 class="modal-title" id="modalLabel{{ imagen['id'] }}">{{ imagen['nombre'] }}</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="{{ url_for('static', filename=imagen['url']) }}" class="img-fluid rounded" alt="{{ imagen['nombre'] }}">
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- <div class="col-md-6">
+        <h6 class="fw-semibold mb-2">Ejemplo 2</h6>
+        <img src="https://picsum.photos/600/400?random=2" alt="Ejemplo 2" class="img-fluid rounded shadow-sm">
+      </div> -->
+    </div>
+
+    <!-- 💬 Comentarios -->
+    <h5 class="fw-semibold mb-3">💬 Comentarios</h5>
+
+    <div class="comment">
+      <p class="mb-1"><strong>Carlos Méndez</strong> · <small class="text-muted">Hace 2 horas</small></p>
+      <p>Excelente guía, muy clara la explicación de factorización. Me ayudó bastante a repasar para mi examen.</p>
+      <button class="btn btn-sm btn-outline-primary reply-btn">Responder 💭</button>
+      <!-- Respuesta -->
+      <div class="reply">
+        <p class="mb-1"><strong>Ana López (autora)</strong> · <small class="text-muted">Hace 1 hora</small></p>
+        <p>¡Gracias, Carlos! Me alegra mucho saber que te fue útil 😊</p>
+        <button class="btn btn-sm btn-outline-primary reply-btn">Responder 💭</button>
+      </div>
+    </div>
+
+    <div class="comment">
+      <p class="mb-1"><strong>Lucía Herrera</strong> · <small class="text-muted">Hace 5 horas</small></p>
+      <p>Podrías agregar más ejemplos de ecuaciones cuadráticas, sería genial.</p>
+
+      <div class="reply">
+        <p class="mb-1"><strong>Ana López (autora)</strong> · <small class="text-muted">Hace 4 horas</small></p>
+        <p>Buena idea, Lucía. Estoy preparando una segunda parte con esos temas 👩‍🏫</p>
+        <button class="btn btn-sm btn-outline-primary reply-btn">Responder 💭</button>
+      </div>
+    </div>
+
+    <div class="comment">
+      <p class="mb-1"><strong>Juan Pérez</strong> · <small class="text-muted">Hace 1 día</small></p>
+      <p>Me gustaría poder descargar la guía completa para imprimirla. ¿Podrías habilitar el botón de descarga?</p>
+      <button class="btn btn-sm btn-outline-primary reply-btn">Responder 💭</button>
+    </div>
+
+    <!-- ✏️ Agregar nuevo comentario -->
+    <div class="card mt-4 p-3">
+      <h6 class="fw-semibold mb-2">Añadir comentario</h6>
+      <form>
+        <textarea class="form-control mb-2" rows="3" placeholder="Escribe tu comentario..."></textarea>
+        <button type="submit" class="btn btn-orange">Publicar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
